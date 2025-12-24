@@ -83,5 +83,3 @@ public class Transaction {
     @CreationTimestamp
     private LocalDateTime createdAt;
 }
-
-// Transfer.java (similar structure)

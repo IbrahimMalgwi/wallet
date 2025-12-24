@@ -1,5 +1,14 @@
 package com.Ibrahim.Wallet.Service.controllers;
 
+import com.Ibrahim.Wallet.Service.DTOs.CreateWalletRequest;
+import com.Ibrahim.Wallet.Service.DTOs.WalletDTO;
+import com.Ibrahim.Wallet.Service.Services.WalletService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/api/v1")
 @Validated

@@ -1,6 +1,16 @@
 package com.Ibrahim.Wallet.Service.DTOs;
 
-// WalletDTO.java
+import com.Ibrahim.Wallet.Service.Entities.Wallet;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,16 +30,6 @@ public class WalletDTO {
                 wallet.getCreatedAt()
         );
     }
-}
-
-// CreateWalletRequest.java
-@Data
-public class CreateWalletRequest {
-    @NotBlank(message = "User ID is required")
-    private String userId;
-
-    @Pattern(regexp = "^[A-Z]{3}$", message = "Currency must be 3 uppercase letters")
-    private String currency = "NGN";
 }
 
 // TransactionRequest.java
@@ -53,21 +53,4 @@ public class TransactionRequest {
     private TransactionType type;
 }
 
-// TransferRequest.java
-@Data
-public class TransferRequest {
-    @NotBlank(message = "Sender wallet ID is required")
-    private String senderWalletId;
 
-    @NotBlank(message = "Receiver wallet ID is required")
-    private String receiverWalletId;
-
-    @NotNull(message = "Amount is required")
-    @Positive(message = "Amount must be positive")
-    private Long amount;
-
-    @NotBlank(message = "Reference is required")
-    private String reference;
-
-    private String idempotencyKey;
-}

@@ -1,10 +1,17 @@
 package com.Ibrahim.Wallet.Service.Exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ApiResponse<?>> handleNotFound(NotFoundException ex) {
+    @ExceptionHandler(ChangeSetPersister.NotFoundException.class)
+    public ResponseEntity<ApiResponse<?>> handleNotFound(ChangeSetPersister.NotFoundException ex) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(ApiResponse.error(ex.getMessage()));
