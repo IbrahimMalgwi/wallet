@@ -1,5 +1,17 @@
 package com.Ibrahim.Wallet.Service.Entities;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
+
+import java.time.LocalDateTime;
+
 // Wallet.java
 @Entity
 @Table(name = "wallets")
