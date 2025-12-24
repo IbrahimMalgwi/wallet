@@ -1,5 +1,19 @@
 package com.Ibrahim.Wallet.Service.Services;
 
+import com.Ibrahim.Wallet.Service.DTOs.WalletDTO;
+import com.Ibrahim.Wallet.Service.Entities.Transaction;
+import com.Ibrahim.Wallet.Service.Entities.Wallet;
+import com.Ibrahim.Wallet.Service.Repositories.TransactionRepository;
+import com.Ibrahim.Wallet.Service.Repositories.WalletRepository;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.coyote.BadRequestException;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 @Slf4j
@@ -139,7 +153,7 @@ public class WalletService {
 
     public WalletDTO getWallet(String id) {
         Wallet wallet = walletRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Wallet not found"));
+                .orElseThrow(() -> new ChangeSetPersister.NotFoundException("Wallet not found"));
         return WalletDTO.fromEntity(wallet);
     }
 }
